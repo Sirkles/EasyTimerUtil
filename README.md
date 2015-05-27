@@ -11,9 +11,9 @@
 
 ## How can I use EasyTimerUtil ? ##
 
-To implement the EasyTimerUtil class into your project, simply import the EasyTimerUtil.java file.
+To implement the EasyTimerUtil class into your project, simply import the **EasyTimerUtil.java** file.
 
-Here is a simple tutorial (written in Java) that walks through using some of the functionality of EasyTimerUtil
+Here is a simple **tutorial** (written in Java) that walks through using some of the functionality of **EasyTimerUtil**
 
 ```
 public class Sirkles_EasyTimer_Examples {
