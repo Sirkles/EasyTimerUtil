@@ -59,6 +59,7 @@ public class EasyTimerUtil {
 		startTime = System.currentTimeMillis();
 		curElapsedPauseTime = 0;
 		totElapsedPauseTime = 0;
+		addedTime = 0;
 		updateTimes();
 	}
 
