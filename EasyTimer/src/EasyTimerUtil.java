@@ -14,7 +14,7 @@
  */
 
 //
-//  EasyTimer.java
+//  EasyTimerUtil.java
 //
 //  Created by Josh Kennedy and Chad Jensen on 29 April 2015
 //  Copyright (C) 2015 Sirkles LLC. All rights reserved.
@@ -28,6 +28,7 @@ public class EasyTimerUtil {
 	private double remainingTime;
 	private double startTime;
 	private double timer;
+	private double addedTime;
 
 	// Pause Variables
 	public boolean paused;
@@ -43,6 +44,7 @@ public class EasyTimerUtil {
 		countDown = 0;
 		curElapsedPauseTime = 0;
 		totElapsedPauseTime = 0;
+		addedTime = 0;
 		updateTimes();
 	}
 
@@ -79,15 +81,13 @@ public class EasyTimerUtil {
 
 	// this can be used for Time Remaining of the total Time alloted WITHIN the object.. 
 	private void setRemainingTime(){
-		//remainingTime = (startTime+countDown)-curTime;
-		remainingTime = (startTime+countDown+ (totElapsedPauseTime + curElapsedPauseTime) )-curTime;
-
+		remainingTime = (startTime + timer + addedTime) -curTime;
 	}	
 
 	// Delta time
 	private void setElapsedTime(){
-		//elapsedTime =  curTime - startTime;
-		elapsedTime =  curTime - (totElapsedPauseTime + curElapsedPauseTime) - startTime;
+		
+		elapsedTime =  curTime - (totElapsedPauseTime + curElapsedPauseTime + addedTime) - startTime;
 	}
 
 	// returns the system's current time
@@ -122,6 +122,12 @@ public class EasyTimerUtil {
 		curElapsedPauseTime = 0.0;
 		paused = false;
 
+	}
+	public void addTime(long parAdd) {
+		addedTime += parAdd;
+	}
+	public void subtractTime(long parSub) {
+		addedTime -= parSub;
 	}
 	
 	// This function MUST be called each loop in order to update all values in this object.
