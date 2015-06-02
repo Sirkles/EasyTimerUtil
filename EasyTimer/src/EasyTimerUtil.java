@@ -57,6 +57,7 @@ public class EasyTimerUtil {
 	// This is when the timer starts
 	public void setStartTime(){
 		startTime = System.currentTimeMillis();
+		paused = false;
 		curElapsedPauseTime = 0;
 		totElapsedPauseTime = 0;
 		addedTime = 0;
