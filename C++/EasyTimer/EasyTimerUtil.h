@@ -49,6 +49,10 @@ public:
 	// This is when the timer starts.
 	void setStartTime();
 
+	void addTime(long long parAdd);
+
+	void subtractTime(long long parSub);
+
 	// This is how long the timer will last.
 	// (for RemainingTime to work, this must be called)
 	void setCountDown(long long parCountDown);
@@ -79,6 +83,7 @@ private:
 	long long remainingTime;
 	long long startTime;
 	long long timer;
+	long long addedTime;
 
 	/* Pause Variables */
 	long long pausedAtTime; // This is used to set the at which we paused at.

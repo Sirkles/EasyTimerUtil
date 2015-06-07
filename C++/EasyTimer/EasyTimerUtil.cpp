@@ -31,6 +31,8 @@ EasyTimerUtil::EasyTimerUtil() {
 	curElapsedPauseTime = 0;
 	totElapsedPauseTime = 0;
 
+	addedTime = 0;
+
 	updateTimes();
 }
 
@@ -52,10 +54,24 @@ void EasyTimerUtil::setCurTime() {
 void EasyTimerUtil::setStartTime() {
 	startTime = currentTimeMillis();
 
+	paused = false;
+
 	curElapsedPauseTime = 0;
 	totElapsedPauseTime = 0;
 
+	addedTime = 0;
+
 	updateTimes();
+}
+
+void EasyTimerUtil::addTime(long long parAdd)
+{
+	addedTime += parAdd;
+}
+
+void EasyTimerUtil::subtractTime(long long parSub)
+{
+	addedTime -= parSub;
 }
 
 void EasyTimerUtil::setCountDown(long long parCountDown) {
@@ -110,11 +126,11 @@ void EasyTimerUtil::setDeltaTime() {
 }
 
 void EasyTimerUtil::setRemainingTime() {
-	remainingTime = (startTime + countDown + (totElapsedPauseTime + curElapsedPauseTime)) - curTime;
+	remainingTime = (startTime + timer + addedTime) - curTime;
 }
 
 void EasyTimerUtil::setElapsedTime() {
-	elapsedTime = curTime - (totElapsedPauseTime + curElapsedPauseTime) - startTime;
+	elapsedTime = curTime - (totElapsedPauseTime + curElapsedPauseTime + addedTime) - startTime;
 }
 
 long long EasyTimerUtil::currentTimeMillis() {
